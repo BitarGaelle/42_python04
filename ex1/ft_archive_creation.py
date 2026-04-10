@@ -29,6 +29,12 @@ def ft_archive_creation() -> None:
             line_list.append(line)
             print(line, end="")
         print("\n---")
+    except FileNotFoundError as v:
+        print(f"Error opening file '{filename}': {v}")
+    except PermissionError as e:
+        print(f"Error opening file '{filename}': {e}")
+
+    try:
         new_file = input("Enter new file name (or empty): ")
         if new_file == "":
             print("Not saving data.")
@@ -40,9 +46,9 @@ def ft_archive_creation() -> None:
             f.close()
             print(f"Data saved in file '{new_file}'")
     except FileNotFoundError as v:
-        print(f"Error opening file '{filename}': {v}")
+        print(f"Error opening file '{new_file}': {v}")
     except PermissionError as e:
-        print(f"Error opening file '{filename}': {e}")
+        print(f"Error opening file '{new_file}': {e}")
 
 
 if __name__ == "__main__":
